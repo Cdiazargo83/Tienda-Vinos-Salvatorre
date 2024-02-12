@@ -23,7 +23,6 @@ return new class extends Migration
 
             // Agregar un índice con un nombre más corto
             $table->index(['tokenable_type', 'tokenable_id'], 'tokenable_index');
-    
         });
     }
 
