@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+
+            
+            // $table->foreignId('current_team_id')->nullable();
+            // $table->text('profile_photo_path')->nullable();
+            // $table->timestamps();
         });
     }
 
@@ -30,3 +36,4 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+
