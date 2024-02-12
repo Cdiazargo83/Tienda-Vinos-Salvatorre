@@ -4,35 +4,37 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreatePersonalAccessTokensTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->text('uuid', 100); // Limitar la longitud de la columna uuid
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
-
-            // Agregar un índice con un nombre más corto
-            $table->index('uuid', 'failed_jobs_uuid_idx');
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->morphs('tokenable');
+            $table->string('name');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('personal_access_tokens');
     }
-};
+}
+
 
 
 
