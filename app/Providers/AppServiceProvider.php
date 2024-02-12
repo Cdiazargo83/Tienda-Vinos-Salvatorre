@@ -18,14 +18,15 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        Schema::defaultStringLength(191);
-        Schema::defaultMacro('timestamp', function ($table) {
+    public function boot()
+{
+    Schema::defaultStringLength(191);
+    Schema::defaultMacro('timestamp', function ($table) {
         $table->timestamps();
-        $table->dateTime('created_at')->precision(2)->change();
-        $table->dateTime('updated_at')->precision(2)->change();
+        $table->dateTime('created_at')->precision(0)->change();
+        $table->dateTime('updated_at')->precision(0)->change();
     });
-    }
+ }
+
 }
 
