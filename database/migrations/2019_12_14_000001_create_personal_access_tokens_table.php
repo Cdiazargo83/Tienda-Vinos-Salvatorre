@@ -47,3 +47,4 @@ class CreatePersonalAccessTokensTable extends Migration
 
 
 
+
