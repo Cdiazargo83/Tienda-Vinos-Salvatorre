@@ -61,14 +61,20 @@ return [
             'engine' => null,
             
             
+            
+            
 
 
 
-
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
+            'options' => [
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci",
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                PDO::ATTR_EMULATE_PREPARES => true,
+                PDO::MYSQL_ATTR_LOCAL_INFILE => true,
+                PDO::MYSQL_ATTR_TIMESTAMP_PRECISION => 2, // Aquí configuramos la precisión de las marcas de tiempo
+            ],
         ],
+        
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -99,6 +105,10 @@ return [
             // 'encrypt' => env('DB_ENCRYPT', 'yes'),
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
+
+        
+
+
 
     ],
 
