@@ -20,6 +20,10 @@ return new class extends Migration
             $table->timestamp('last_used_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
+
+            // Agregar un índice con un nombre más corto
+            $table->index(['tokenable_type', 'tokenable_id'], 'tokenable_index');
+    
         });
     }
 
