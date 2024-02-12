@@ -74,7 +74,7 @@ return [
                 PDO::MYSQL_ATTR_TIMESTAMP_PRECISION => 2, // Aquí configuramos la precisión de las marcas de tiempo
             ],
         ],
-        
+
 
         'pgsql' => [
             'driver' => 'pgsql',

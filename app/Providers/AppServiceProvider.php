@@ -23,8 +23,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         Schema::defaultMacro('timestamp', function ($table) {
         $table->timestamps();
-        $table->dateTime('created_at')->precision(0)->change();
-        $table->dateTime('updated_at')->precision(0)->change();
+        $table->dateTime('created_at')->precision(2)->change();
+        $table->dateTime('updated_at')->precision(2)->change();
     });
     }
 }
