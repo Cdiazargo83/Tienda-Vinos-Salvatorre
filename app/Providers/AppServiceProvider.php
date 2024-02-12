@@ -21,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(191);
+        Schema::defaultMacro('timestamp', function ($table) {
+        $table->timestamps();
+        $table->dateTime('created_at')->precision(0)->change();
+        $table->dateTime('updated_at')->precision(0)->change();
+    });
     }
 }
 

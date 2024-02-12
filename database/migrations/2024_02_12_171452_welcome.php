@@ -15,7 +15,9 @@ return new class extends Migration
         Schema::create('vinos',function(Blueprint $table){
             $table->string('id', 50)->primary(); // Esto creará automáticamente una columna id como tipo bigIncrements y la marcará como clave primaria.
 
-            $table->timestamps()//El timestampsmétodo crea created_atcolumnas updated_at TIMESTAMPequivalentes con una precisión opcional (dígitos totales):
+            $table->timestamps($precision=0);//El timestampsmétodo crea created_atcolumnas updated_at TIMESTAMPequivalentes con una precisión opcional (dígitos totales):
+
+            $table->string('name', 45)->nullable();
 
 
         });
@@ -28,7 +30,9 @@ return new class extends Migration
     public function down(): void
     {
         //
+        Schema::dropIfExists('vinos');
     }
+
 };
 
 
