@@ -71,7 +71,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
                 PDO::ATTR_EMULATE_PREPARES => true,
                 PDO::MYSQL_ATTR_LOCAL_INFILE => true,
-                PDO::MYSQL_ATTR_TIMESTAMP_PRECISION => 2, // Aquí configuramos la precisión de las marcas de tiempo
+                // PDO::MYSQL_ATTR_TIMESTAMP_PRECISION => 2, // Aquí configuramos la precisión de las marcas de tiempo
             ],
         ],
 
