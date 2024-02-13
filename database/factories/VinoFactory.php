@@ -1,0 +1,39 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Vino;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class VinoFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Vino::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->sentence(),
+            'description' => $this->faker->paragraph(),
+            'categoria' => $this->faker->randomElement(['Semi Seco', 'Seco']),
+        ];
+    }
+}
+
+
+
+
+
+
+
+
+
