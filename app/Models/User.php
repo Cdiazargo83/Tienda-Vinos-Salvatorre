@@ -8,6 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -23,7 +28,7 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
+        /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -42,4 +47,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    protected function name(): Attribute
+    {
+     
+        return new Attribute(
+            get: fn($value) => ucwords($value),
+
+            set: function($value){
+                return strtolower($value);
+            }
+        );
+
+
+
+    }
+
+    public function getNameAtttibute($value){
+        return ucwords($value);
+    }
+
+    public function setNameAttirbute(){
+        $this -> attribute['name'] = strtolower($value);
+    }
 }
